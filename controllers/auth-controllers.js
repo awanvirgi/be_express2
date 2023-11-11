@@ -40,7 +40,7 @@ module.exports = {
             if (bcrypt.compareSync(data.password, dataUser.password)) {
                 const token = jwt.sign({
                     id: dataUser.id, email: dataUser.email
-                }, "VIOREEE")
+                }, process.env.JWT_KEY)
                 res.status(200).json({
                     message: "Berhasil Terlogin",
                     data: {

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Todo.init({
-    tittle: {
+    title: {
       type:DataTypes.BOOLEAN,
       allowNull:false
     },
@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     status: {
       type:DataTypes.BOOLEAN,
+      defaultValue:false,
       allowNull:false
     },
     user_id:{
