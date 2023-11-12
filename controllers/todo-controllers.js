@@ -4,7 +4,7 @@ module.exports = {
     createTodo: async (req, res) => {
         try {
             const user = req.user
-            const data = req.body
+            const data = req.body.data
             console.log(data)
             const task = await Todo.create({ title: data.title, detail: data.detail, user_id: user.id })
             if (!task) return res.status(500).json({
@@ -53,7 +53,7 @@ module.exports = {
             }
             res.status(200).json({
                 message: "Berhasil menampilkan detail Todo",
-                todos: todo
+                todos:[todo] 
             })
         } catch (err) {
             console.error(err);
@@ -66,7 +66,7 @@ module.exports = {
     editTodoById: async (req, res) => {
         try {
             const id = req.params.id
-            const data = req.body
+            const data = req.body.data
             await Todo.update({ title: data.title,detail:data.detail }, {
                 where: {
                     id: id
